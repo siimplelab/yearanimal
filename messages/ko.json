@@ -1,0 +1,129 @@
+{
+  "common": {
+    "appName": "띠 찾기",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "tryAgain": "다시 시도",
+    "share": "공유",
+    "back": "뒤로",
+    "next": "다음",
+    "language": "언어"
+  },
+  "home": {
+    "title": "당신의 띠를 찾아보세요",
+    "subtitle": "태어난 연도를 입력하여 띠와 오행을 확인하세요",
+    "yearInput": {
+      "label": "태어난 연도 입력",
+      "placeholder": "예: 1990",
+      "submit": "확인하기",
+      "validation": {
+        "required": "연도를 입력해주세요",
+        "invalid": "올바른 연도를 입력해주세요",
+        "range": "{min}년과 {max}년 사이의 연도를 입력해주세요"
+      }
+    },
+    "quickSelect": {
+      "title": "빠른 선택",
+      "currentYear": "올해",
+      "popular": "인기 연도"
+    }
+  },
+  "result": {
+    "title": "당신의 띠 정보",
+    "yourAnimal": "당신은",
+    "element": "오행",
+    "cycleYear": "갑자 순환",
+    "traits": "성격 특징",
+    "luckyNumbers": "행운의 숫자",
+    "compatibility": {
+      "title": "궁합",
+      "excellent": "최고의 궁합",
+      "challenging": "도전적인 궁합"
+    },
+    "fullName": {
+      "traditional": "전통 이름",
+      "korean": "한국식 이름",
+      "english": "영어 이름"
+    },
+    "nextOccurrence": "다음 {animal} {element} 해",
+    "shareText": "저는 {animal}띠입니다! 당신의 띠를 확인해보세요"
+  },
+  "animals": {
+    "rat": "쥐",
+    "ox": "소",
+    "tiger": "호랑이",
+    "rabbit": "토끼",
+    "dragon": "용",
+    "snake": "뱀",
+    "horse": "말",
+    "goat": "양",
+    "monkey": "원숭이",
+    "rooster": "닭",
+    "dog": "개",
+    "pig": "돼지"
+  },
+  "elements": {
+    "wood": "목",
+    "fire": "화",
+    "earth": "토",
+    "metal": "금",
+    "water": "수"
+  },
+  "colors": {
+    "blue": "청색",
+    "green": "녹색",
+    "red": "적색",
+    "yellow": "황색",
+    "brown": "갈색",
+    "white": "백색",
+    "silver": "은색",
+    "black": "흑색",
+    "gold": "금색"
+  },
+  "navigation": {
+    "home": "홈",
+    "gallery": "모든 띠",
+    "compatibility": "궁합",
+    "about": "소개"
+  },
+  "gallery": {
+    "title": "12간지",
+    "subtitle": "12간지의 모든 동물을 탐색하세요",
+    "yearsLabel": "해당 연도",
+    "traitsLabel": "특징",
+    "elementFilter": "오행으로 필터",
+    "allElements": "모든 오행"
+  },
+  "compatibility": {
+    "title": "띠 궁합",
+    "subtitle": "두 사람의 띠 궁합을 확인하세요",
+    "year1Label": "첫 번째 사람의 연도",
+    "year2Label": "두 번째 사람의 연도",
+    "checkButton": "궁합 확인",
+    "score": "궁합 점수",
+    "animalMatch": "띠 궁합",
+    "elementMatch": "오행 조화",
+    "excellent": "최고의 궁합",
+    "good": "좋은 궁합",
+    "neutral": "보통",
+    "challenging": "도전적",
+    "harmonious": "조화로움",
+    "conflicting": "상충"
+  },
+  "about": {
+    "title": "12간지와 오행",
+    "intro": "12간지는 12개의 동물과 5개의 원소가 결합된 60년 주기입니다.",
+    "animalsSection": {
+      "title": "12간지 동물",
+      "description": "각 동물은 고유한 성격 특성을 나타내며 12년마다 한 번씩 돌아옵니다."
+    },
+    "elementsSection": {
+      "title": "오행",
+      "description": "오행은 2년마다 바뀌며 띠에 또 다른 의미를 더합니다."
+    },
+    "cycleSection": {
+      "title": "60갑자",
+      "description": "12간지와 5원소의 조합으로 완전한 60년 주기가 만들어집니다."
+    }
+  }
+}

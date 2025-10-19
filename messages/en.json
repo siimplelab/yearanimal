@@ -1,0 +1,129 @@
+{
+  "common": {
+    "appName": "Year Animal",
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try Again",
+    "share": "Share",
+    "back": "Back",
+    "next": "Next",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Discover Your Zodiac Animal",
+    "subtitle": "Enter your birth year to discover your Chinese zodiac animal and element",
+    "yearInput": {
+      "label": "Enter Your Birth Year",
+      "placeholder": "e.g., 1990",
+      "submit": "Discover",
+      "validation": {
+        "required": "Please enter a year",
+        "invalid": "Please enter a valid year",
+        "range": "Please enter a year between {min} and {max}"
+      }
+    },
+    "quickSelect": {
+      "title": "Quick Select",
+      "currentYear": "Current Year",
+      "popular": "Popular Years"
+    }
+  },
+  "result": {
+    "title": "Your Zodiac Profile",
+    "yourAnimal": "You are a",
+    "element": "Element",
+    "cycleYear": "Cycle Year",
+    "traits": "Personality Traits",
+    "luckyNumbers": "Lucky Numbers",
+    "compatibility": {
+      "title": "Compatibility",
+      "excellent": "Excellent with",
+      "challenging": "Challenging with"
+    },
+    "fullName": {
+      "traditional": "Traditional Name",
+      "korean": "Korean Name",
+      "english": "English Name"
+    },
+    "nextOccurrence": "Next {animal} {element} year",
+    "shareText": "I'm a {animal} in the Chinese zodiac! Discover yours at"
+  },
+  "animals": {
+    "rat": "Rat",
+    "ox": "Ox",
+    "tiger": "Tiger",
+    "rabbit": "Rabbit",
+    "dragon": "Dragon",
+    "snake": "Snake",
+    "horse": "Horse",
+    "goat": "Goat",
+    "monkey": "Monkey",
+    "rooster": "Rooster",
+    "dog": "Dog",
+    "pig": "Pig"
+  },
+  "elements": {
+    "wood": "Wood",
+    "fire": "Fire",
+    "earth": "Earth",
+    "metal": "Metal",
+    "water": "Water"
+  },
+  "colors": {
+    "blue": "Blue",
+    "green": "Green",
+    "red": "Red",
+    "yellow": "Yellow",
+    "brown": "Brown",
+    "white": "White",
+    "silver": "Silver",
+    "black": "Black",
+    "gold": "Gold"
+  },
+  "navigation": {
+    "home": "Home",
+    "gallery": "All Animals",
+    "compatibility": "Compatibility",
+    "about": "About"
+  },
+  "gallery": {
+    "title": "The 12 Zodiac Animals",
+    "subtitle": "Explore all animals in the Chinese zodiac cycle",
+    "yearsLabel": "Years",
+    "traitsLabel": "Traits",
+    "elementFilter": "Filter by Element",
+    "allElements": "All Elements"
+  },
+  "compatibility": {
+    "title": "Zodiac Compatibility",
+    "subtitle": "Check compatibility between two zodiac signs",
+    "year1Label": "First Person's Year",
+    "year2Label": "Second Person's Year",
+    "checkButton": "Check Compatibility",
+    "score": "Compatibility Score",
+    "animalMatch": "Animal Compatibility",
+    "elementMatch": "Element Harmony",
+    "excellent": "Excellent Match",
+    "good": "Good Match",
+    "neutral": "Neutral",
+    "challenging": "Challenging",
+    "harmonious": "Harmonious",
+    "conflicting": "Conflicting"
+  },
+  "about": {
+    "title": "About the Chinese Zodiac",
+    "intro": "The Chinese zodiac is a repeating 60-year cycle combining 12 animals and 5 elements.",
+    "animalsSection": {
+      "title": "The 12 Animals",
+      "description": "Each animal represents different personality traits and appears once every 12 years."
+    },
+    "elementsSection": {
+      "title": "The 5 Elements",
+      "description": "Elements change every two years and add another layer of meaning to your zodiac sign."
+    },
+    "cycleSection": {
+      "title": "The 60-Year Cycle",
+      "description": "The combination of 12 animals and 5 elements creates a complete 60-year cycle."
+    }
+  }
+}
