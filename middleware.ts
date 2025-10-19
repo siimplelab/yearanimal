@@ -1,24 +1,26 @@
-import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ['en', 'ko'],
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
 
-  // Used when no locale matches
-  defaultLocale: 'en',
+  // Check if the pathname is missing a locale
+  const pathnameIsMissingLocale = ['en', 'ko'].every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  );
 
-  // Enable automatic locale detection
-  localeDetection: true
-});
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    const locale = 'en'; // Default to English
+    return NextResponse.redirect(
+      new URL(`/${locale}${pathname}`, request.url)
+    );
+  }
+}
 
 export const config = {
-  // Match only internationalized pathnames
   matcher: [
-    // Match all pathnames except for
-    // - . files (e.g. favicon.ico)
-    // - _next (Next.js internals)
-    // - api, _vercel (API routes and Vercel internals)
-    // - static files with extensions
-    '/((?!api|_next|_vercel|.*\\..*).*)'
-  ]
+    // Skip all internal paths (_next, api, etc.)
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\..*|_vercel).*)',
+  ],
 };

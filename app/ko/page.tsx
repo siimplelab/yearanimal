@@ -1,12 +1,10 @@
-import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import YearAnimalClient from './YearAnimalClient';
+import koMessages from '@/messages/ko.json';
 
-export default async function KoreanPage() {
-  const messages = await getMessages();
-
+export default function KoreanPage() {
   return (
-    <NextIntlClientProvider messages={messages} locale="ko">
+    <NextIntlClientProvider messages={koMessages} locale="ko">
       <YearAnimalClient />
     </NextIntlClientProvider>
   );

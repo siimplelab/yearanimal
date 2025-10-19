@@ -1,11 +1,11 @@
 import { generateMetadata as generateSEOMetadata, generateStructuredData, viewport as seoViewport } from '@/lib/config/seo';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '../components/ThemeProvider';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import Script from 'next/script';
 import "../globals.css";
+import enMessages from '@/messages/en.json';
 
 export async function generateMetadata() {
   return generateSEOMetadata('en');
@@ -13,13 +13,12 @@ export async function generateMetadata() {
 
 export const viewport = seoViewport;
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
   const locale = 'en';
-  const messages = await getMessages();
   const structuredData = generateStructuredData(locale);
 
   return (
@@ -33,7 +32,7 @@ export default async function LocaleLayout({
       </head>
       <body className="antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
         <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider messages={enMessages} locale={locale}>
             <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50">
               Skip to main content
             </a>
