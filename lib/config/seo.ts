@@ -91,13 +91,14 @@ export function generateMetadata(locale: string = 'en'): Metadata {
         'max-snippet': -1,
       },
     },
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 1,
-    },
   };
 }
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 // Structured data for SEO (JSON-LD)
 export function generateStructuredData(locale: string = 'en') {

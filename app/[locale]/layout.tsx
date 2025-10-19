@@ -1,4 +1,4 @@
-import { generateMetadata as generateSEOMetadata, generateStructuredData } from '@/lib/config/seo';
+import { generateMetadata as generateSEOMetadata, generateStructuredData, viewport as seoViewport } from '@/lib/config/seo';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '../components/ThemeProvider';
@@ -10,6 +10,12 @@ import "../globals.css";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   return generateSEOMetadata(locale);
+}
+
+export const viewport = seoViewport;
+
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'ko' }];
 }
 
 export default async function LocaleLayout({
