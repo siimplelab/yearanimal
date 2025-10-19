@@ -88,7 +88,7 @@ export default function ShareButton({ profile }: ShareButtonProps) {
       </h3>
 
       {/* Native Share (if supported) */}
-      {typeof window !== 'undefined' && navigator.share && (
+      {typeof window !== 'undefined' && 'share' in navigator && (
         <button
           onClick={() => handleShare('native')}
           className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
