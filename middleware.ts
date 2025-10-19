@@ -7,11 +7,18 @@ export default createMiddleware({
   // Used when no locale matches
   defaultLocale: 'en',
 
-  // Don't redirect when accessing root
+  // Enable automatic locale detection
   localeDetection: true
 });
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ['/', '/(en|ko)/:path*']
+  matcher: [
+    // Match all pathnames except for
+    // - . files (e.g. favicon.ico)
+    // - _next (Next.js internals)
+    // - api, _vercel (API routes and Vercel internals)
+    // - static files with extensions
+    '/((?!api|_next|_vercel|.*\\..*).*)'
+  ]
 };
