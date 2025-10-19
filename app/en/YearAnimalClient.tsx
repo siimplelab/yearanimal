@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useI18n } from '@/lib/i18n/i18n-context';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { calculateZodiacProfile } from '@/lib/utils/zodiac-calculator';
 import ShareButton from '../components/ShareButton';
 
 export default function Home() {
-  const t = useTranslations();
-  const locale = useLocale();
+  const { t, locale } = useI18n();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [year, setYear] = useState('');

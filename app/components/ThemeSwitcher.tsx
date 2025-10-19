@@ -1,8 +1,26 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useTheme } from './ThemeProvider';
 
 export default function ThemeSwitcher() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render anything until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="w-[41px] h-[40px] rounded-lg border border-gray-300 dark:border-gray-700" />
+    );
+  }
+
+  return <ThemeSwitcherContent />;
+}
+
+function ThemeSwitcherContent() {
   const { theme, toggleTheme } = useTheme();
 
   return (

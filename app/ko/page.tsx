@@ -1,11 +1,10 @@
-import { NextIntlClientProvider } from 'next-intl';
+import { Suspense } from 'react';
 import YearAnimalClient from './YearAnimalClient';
-import koMessages from '@/messages/ko.json';
 
 export default function KoreanPage() {
   return (
-    <NextIntlClientProvider messages={koMessages} locale="ko">
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
       <YearAnimalClient />
-    </NextIntlClientProvider>
+    </Suspense>
   );
 }

@@ -1,11 +1,10 @@
-import { NextIntlClientProvider } from 'next-intl';
+import { Suspense } from 'react';
 import YearAnimalClient from './YearAnimalClient';
-import enMessages from '@/messages/en.json';
 
 export default function EnglishPage() {
   return (
-    <NextIntlClientProvider messages={enMessages} locale="en">
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
       <YearAnimalClient />
-    </NextIntlClientProvider>
+    </Suspense>
   );
 }

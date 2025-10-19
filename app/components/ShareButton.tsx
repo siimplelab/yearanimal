@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useI18n } from '@/lib/i18n/i18n-context';
 import { ZodiacProfile } from '@/lib/types/zodiac';
 
 interface ShareButtonProps {
@@ -9,8 +9,7 @@ interface ShareButtonProps {
 }
 
 export default function ShareButton({ profile }: ShareButtonProps) {
-  const t = useTranslations();
-  const locale = useLocale();
+  const { t, locale } = useI18n();
   const [copied, setCopied] = useState(false);
 
   const shareUrl = typeof window !== 'undefined'

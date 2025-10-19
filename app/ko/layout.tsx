@@ -1,11 +1,7 @@
 import { generateMetadata as generateSEOMetadata, generateStructuredData, viewport as seoViewport } from '@/lib/config/seo';
-import { NextIntlClientProvider } from 'next-intl';
-import { ThemeProvider } from '../components/ThemeProvider';
-import ThemeSwitcher from '../components/ThemeSwitcher';
-import LanguageSwitcher from '../components/LanguageSwitcher';
+import LayoutWrapper from '../components/LayoutWrapper';
 import Script from 'next/script';
 import "../globals.css";
-import koMessages from '@/messages/ko.json';
 
 export async function generateMetadata() {
   return generateSEOMetadata('ko');
@@ -31,20 +27,9 @@ export default function LocaleLayout({
         />
       </head>
       <body className="antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
-        <ThemeProvider>
-          <NextIntlClientProvider messages={koMessages} locale={locale}>
-            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50">
-              Skip to main content
-            </a>
-            <header className="fixed top-0 right-0 z-10 flex items-center gap-2 p-4">
-              <ThemeSwitcher />
-              <LanguageSwitcher />
-            </header>
-            <main id="main-content" role="main">
-              {children}
-            </main>
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <LayoutWrapper locale="ko">
+          {children}
+        </LayoutWrapper>
       </body>
     </html>
   );
