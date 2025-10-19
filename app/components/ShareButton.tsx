@@ -28,7 +28,6 @@ export default function ShareButton({ profile }: ShareButtonProps) {
   const handleShare = async (platform: string) => {
     const encodedUrl = encodeURIComponent(shareUrl);
     const encodedText = encodeURIComponent(shareText);
-    const encodedTitle = encodeURIComponent(shareTitle);
 
     let shareLink = '';
 
@@ -60,7 +59,7 @@ export default function ShareButton({ profile }: ShareButtonProps) {
               text: shareText,
               url: shareUrl,
             });
-          } catch (err) {
+          } catch {
             console.log('Share cancelled');
           }
           return;
@@ -71,7 +70,7 @@ export default function ShareButton({ profile }: ShareButtonProps) {
           await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
           setCopied(true);
           setTimeout(() => setCopied(false), 2000);
-        } catch (err) {
+        } catch {
           console.error('Failed to copy');
         }
         return;

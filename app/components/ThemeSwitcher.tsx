@@ -1,11 +1,9 @@
 'use client';
 
 import { useTheme } from './ThemeProvider';
-import { useTranslations } from 'next-intl';
 
 export default function ThemeSwitcher() {
   const { theme, toggleTheme } = useTheme();
-  const t = useTranslations();
 
   return (
     <button

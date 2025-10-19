@@ -7,17 +7,19 @@ import LanguageSwitcher from '../components/LanguageSwitcher';
 import Script from 'next/script';
 import "../globals.css";
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return generateSEOMetadata(locale);
 }
 
 export default async function LocaleLayout({
   children,
-  params: { locale }
+  params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const messages = await getMessages();
   const structuredData = generateStructuredData(locale);
 

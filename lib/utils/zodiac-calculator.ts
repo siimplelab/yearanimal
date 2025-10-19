@@ -1,4 +1,4 @@
-import { ZodiacProfile, Animal, Element } from '../types/zodiac';
+import { ZodiacProfile } from '../types/zodiac';
 import { animals } from '../data/animals';
 import { elements } from '../data/elements';
 
@@ -169,8 +169,6 @@ export function checkCompatibility(year1: number, year2: number): {
  */
 export function getNextOccurrence(animalId: string, elementId: string, fromYear: number = new Date().getFullYear()): number | null {
   // The same animal-element combination repeats every 60 years
-  const currentProfile = calculateZodiacProfile(fromYear);
-
   for (let year = fromYear + 1; year <= fromYear + 60; year++) {
     const profile = calculateZodiacProfile(year);
     if (profile.animal.id === animalId && profile.element.id === elementId) {
