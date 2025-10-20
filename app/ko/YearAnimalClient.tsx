@@ -154,8 +154,8 @@ export default function Home() {
               <p className="text-xl font-semibold">
                 {result.fullName.en}
               </p>
-              <p className="text-lg font-medium text-gray-700 dark:text-gray-300" lang="zh">
-                {result.fullName.hanja} ({result.fullName.traditional})
+              <p className="text-lg font-medium text-gray-700 dark:text-gray-300" lang="ko">
+                {result.fullName.koYear}
               </p>
             </div>
           </div>

@@ -48,8 +48,9 @@ export interface ZodiacProfile {
   fullName: {
     ko: string; // e.g., "백마띠"
     en: string; // e.g., "Metal Horse"
-    traditional: string; // e.g., "경오년"
+    traditional: string; // e.g., "庚午년"
     hanja: string; // e.g., "庚午年"
+    koYear: string; // e.g., "경오년" (pure Hangul)
   };
   cycleYear: number; // 1-60 position in the cycle
 }

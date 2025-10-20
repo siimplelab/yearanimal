@@ -152,10 +152,10 @@ export default function Home() {
                 {result.fullName.en}
               </h2>
               <p className="text-xl font-semibold" lang="ko">
-                {result.fullName.ko}
+                {result.fullName.ko} ({result.fullName.koYear})
               </p>
               <p className="text-lg font-medium text-gray-700 dark:text-gray-300" lang="zh">
-                {result.fullName.hanja} ({result.fullName.traditional})
+                {result.fullName.hanja}
               </p>
             </div>
           </div>

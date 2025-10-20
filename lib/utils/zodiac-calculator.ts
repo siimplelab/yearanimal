@@ -35,7 +35,8 @@ export function calculateZodiacProfile(year: number): ZodiacProfile {
     ko: `${element.colors.ko[0]}${animal.nameKo}띠`,
     en: `${element.nameEn} ${animal.nameEn}`,
     traditional: `${heavenlyStem.hanja}${animal.earthlyBranchHanja}년`,
-    hanja: `${heavenlyStem.hanja}${animal.earthlyBranchHanja}年`
+    hanja: `${heavenlyStem.hanja}${animal.earthlyBranchHanja}年`,
+    koYear: `${heavenlyStem.ko}${animal.earthlyBranch}년` // Pure Hangul year notation (e.g., 경오년, 을사년)
   };
 
   return {
