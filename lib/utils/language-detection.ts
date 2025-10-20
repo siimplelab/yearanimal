@@ -46,7 +46,6 @@ export function getCountryFromHeaders(request: NextRequest): string | null {
   // Vercel provides geolocation headers
   const country = request.headers.get('x-vercel-ip-country') ||
                   request.headers.get('x-country') ||
-                  request.geo?.country ||
                   null;
 
   return country;

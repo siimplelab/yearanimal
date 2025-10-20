@@ -3,9 +3,10 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import enMessages from '@/messages/en.json';
 import koMessages from '@/messages/ko.json';
+import zhMessages from '@/messages/zh.json';
 
 type Messages = typeof enMessages;
-type Locale = 'en' | 'ko';
+type Locale = 'en' | 'ko' | 'zh';
 
 interface I18nContextType {
   locale: Locale;
@@ -19,6 +20,7 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 const messages = {
   en: enMessages,
   ko: koMessages,
+  zh: zhMessages,
 };
 
 export function I18nProvider({

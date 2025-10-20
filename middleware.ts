@@ -38,7 +38,7 @@ export function middleware(request: NextRequest) {
     });
 
     // Add detection headers for debugging (optional)
-    const country = request.headers.get('x-vercel-ip-country') || request.geo?.country;
+    const country = request.headers.get('x-vercel-ip-country');
     if (country) {
       response.headers.set('x-detected-country', country);
     }
@@ -73,7 +73,7 @@ export function middleware(request: NextRequest) {
 
     // Add headers for debugging (optional)
     response.headers.set('x-detection-method', detectionMethod);
-    const country = request.headers.get('x-vercel-ip-country') || request.geo?.country;
+    const country = request.headers.get('x-vercel-ip-country');
     if (country) {
       response.headers.set('x-detected-country', country);
     }

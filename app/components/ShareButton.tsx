@@ -16,13 +16,12 @@ export default function ShareButton({ profile }: ShareButtonProps) {
     ? `${window.location.origin}/${locale}?year=${profile.year}`
     : '';
 
-  const shareText = locale === 'ko'
-    ? `저는 ${profile.fullName.ko}입니다! 당신의 띠를 확인해보세요.`
-    : `I'm a ${profile.fullName.en}! Discover your Chinese zodiac.`;
+  const fullName = locale === 'ko' ? profile.fullName.ko :
+                   locale === 'zh' ? profile.fullName.hanja :
+                   profile.fullName.en;
 
-  const shareTitle = locale === 'ko'
-    ? `나는 ${profile.fullName.ko}`
-    : `I'm a ${profile.fullName.en}`;
+  const shareText = t('result.shareText', { fullName });
+  const shareTitle = t('result.shareTitle', { fullName });
 
   const handleShare = async (platform: string) => {
     const encodedUrl = encodeURIComponent(shareUrl);
@@ -136,7 +135,7 @@ export default function ShareButton({ profile }: ShareButtonProps) {
               className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               aria-label="Share on Kakao"
             >
-              <span className="text-sm font-medium">Kakao</span>
+              <span className="text-sm font-medium">{t('share.platforms.kakao')}</span>
             </button>
 
             <button
@@ -144,7 +143,7 @@ export default function ShareButton({ profile }: ShareButtonProps) {
               className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               aria-label="Share on Line"
             >
-              <span className="text-sm font-medium">Line</span>
+              <span className="text-sm font-medium">{t('share.platforms.line')}</span>
             </button>
           </>
         )}
@@ -166,12 +165,12 @@ export default function ShareButton({ profile }: ShareButtonProps) {
         className="w-full py-2 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
         aria-label="Copy link to clipboard"
       >
-        {copied ? '✓ Copied!' : 'Copy Link'}
+        {copied ? `✓ ${t('common.copied')}` : t('common.copyLink')}
       </button>
 
       {/* Direct Link Display */}
       <div className="p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
-        <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Direct link:</p>
+        <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{t('common.directLink')}:</p>
         <p className="text-xs break-all font-mono">{shareUrl}</p>
       </div>
     </div>

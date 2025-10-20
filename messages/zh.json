@@ -1,0 +1,143 @@
+{
+  "common": {
+    "appName": "生肖查詢",
+    "loading": "載入中...",
+    "error": "錯誤",
+    "tryAgain": "重試",
+    "share": "分享",
+    "back": "返回",
+    "next": "下一個",
+    "language": "語言",
+    "copyLink": "複製連結",
+    "copied": "已複製！",
+    "directLink": "直接連結"
+  },
+  "home": {
+    "title": "探索您的生肖",
+    "subtitle": "輸入您的出生年份以發現您的生肖和五行",
+    "yearInput": {
+      "label": "輸入您的出生年份",
+      "placeholder": "例如：1990",
+      "submit": "查詢",
+      "validation": {
+        "required": "請輸入年份",
+        "invalid": "請輸入有效的年份",
+        "range": "請輸入 {min} 和 {max} 之間的年份"
+      }
+    },
+    "quickSelect": {
+      "title": "快速選擇",
+      "currentYear": "今年",
+      "popular": "熱門年份"
+    }
+  },
+  "result": {
+    "title": "您的生肖資料",
+    "yourAnimal": "您是",
+    "element": "五行",
+    "cycleYear": "六十甲子",
+    "traits": "性格特徵",
+    "luckyNumbers": "幸運數字",
+    "compatibility": {
+      "title": "相容性",
+      "excellent": "極佳相配",
+      "challenging": "具挑戰性"
+    },
+    "fullName": {
+      "traditional": "傳統名稱",
+      "korean": "韓文名稱",
+      "english": "英文名稱"
+    },
+    "nextOccurrence": "下一個{animal}{element}年",
+    "shareText": "我是{fullName}！發現您的生肖。",
+    "shareTitle": "我是{fullName}"
+  },
+  "share": {
+    "platforms": {
+      "twitter": "推特",
+      "facebook": "臉書",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "kakao": "Kakao",
+      "line": "Line"
+    }
+  },
+  "animals": {
+    "rat": "鼠",
+    "ox": "牛",
+    "tiger": "虎",
+    "rabbit": "兔",
+    "dragon": "龍",
+    "snake": "蛇",
+    "horse": "馬",
+    "goat": "羊",
+    "monkey": "猴",
+    "rooster": "雞",
+    "dog": "狗",
+    "pig": "豬"
+  },
+  "elements": {
+    "wood": "木",
+    "fire": "火",
+    "earth": "土",
+    "metal": "金",
+    "water": "水"
+  },
+  "colors": {
+    "blue": "藍色",
+    "green": "綠色",
+    "red": "紅色",
+    "yellow": "黃色",
+    "brown": "棕色",
+    "white": "白色",
+    "silver": "銀色",
+    "black": "黑色",
+    "gold": "金色"
+  },
+  "navigation": {
+    "home": "首頁",
+    "gallery": "所有生肖",
+    "compatibility": "相容性",
+    "about": "關於"
+  },
+  "gallery": {
+    "title": "十二生肖",
+    "subtitle": "探索十二生肖週期中的所有動物",
+    "yearsLabel": "年份",
+    "traitsLabel": "特徵",
+    "elementFilter": "按五行篩選",
+    "allElements": "所有五行"
+  },
+  "compatibility": {
+    "title": "生肖相容性",
+    "subtitle": "檢查兩個生肖之間的相容性",
+    "year1Label": "第一個人的年份",
+    "year2Label": "第二個人的年份",
+    "checkButton": "檢查相容性",
+    "score": "相容性分數",
+    "animalMatch": "生肖相容",
+    "elementMatch": "五行和諧",
+    "excellent": "極佳配對",
+    "good": "良好配對",
+    "neutral": "中性",
+    "challenging": "具挑戰性",
+    "harmonious": "和諧",
+    "conflicting": "衝突"
+  },
+  "about": {
+    "title": "關於生肖",
+    "intro": "中國生肖是一個重複的60年週期，結合了12種動物和5種元素。",
+    "animalsSection": {
+      "title": "十二生肖",
+      "description": "每種動物代表不同的性格特徵，每12年出現一次。"
+    },
+    "elementsSection": {
+      "title": "五行",
+      "description": "五行每兩年變化一次，為您的生肖增添另一層含義。"
+    },
+    "cycleSection": {
+      "title": "六十甲子",
+      "description": "12種動物和5種元素的組合創造了一個完整的60年週期。"
+    }
+  }
+}

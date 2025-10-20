@@ -7,7 +7,10 @@
     "share": "Share",
     "back": "Back",
     "next": "Next",
-    "language": "Language"
+    "language": "Language",
+    "copyLink": "Copy Link",
+    "copied": "Copied!",
+    "directLink": "Direct link"
   },
   "home": {
     "title": "Discover Your Zodiac Animal",
@@ -46,7 +49,18 @@
       "english": "English Name"
     },
     "nextOccurrence": "Next {animal} {element} year",
-    "shareText": "I'm a {animal} in the Chinese zodiac! Discover yours at"
+    "shareText": "I'm a {fullName}! Discover your Chinese zodiac.",
+    "shareTitle": "I'm a {fullName}"
+  },
+  "share": {
+    "platforms": {
+      "twitter": "Twitter",
+      "facebook": "Facebook",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "kakao": "Kakao",
+      "line": "Line"
+    }
   },
   "animals": {
     "rat": "Rat",

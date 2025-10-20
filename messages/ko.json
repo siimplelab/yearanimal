@@ -7,7 +7,10 @@
     "share": "공유",
     "back": "뒤로",
     "next": "다음",
-    "language": "언어"
+    "language": "언어",
+    "copyLink": "링크 복사",
+    "copied": "복사됨!",
+    "directLink": "직접 링크"
   },
   "home": {
     "title": "당신의 띠를 찾아보세요",
@@ -46,7 +49,18 @@
       "english": "영어 이름"
     },
     "nextOccurrence": "다음 {animal} {element} 해",
-    "shareText": "저는 {animal}띠입니다! 당신의 띠를 확인해보세요"
+    "shareText": "저는 {fullName}입니다! 당신의 띠를 확인해보세요.",
+    "shareTitle": "나는 {fullName}"
+  },
+  "share": {
+    "platforms": {
+      "twitter": "트위터",
+      "facebook": "페이스북",
+      "whatsapp": "왓츠앱",
+      "telegram": "텔레그램",
+      "kakao": "카카오",
+      "line": "라인"
+    }
   },
   "animals": {
     "rat": "쥐",

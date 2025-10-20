@@ -6,6 +6,13 @@ export const COUNTRY_LANGUAGE_MAP: Record<string, string> = {
   'KR': 'ko', // South Korea
   'KP': 'ko', // North Korea
 
+  // Chinese-speaking regions
+  'CN': 'zh', // China
+  'TW': 'zh', // Taiwan
+  'HK': 'zh', // Hong Kong
+  'MO': 'zh', // Macao
+  'SG': 'zh', // Singapore (has significant Chinese-speaking population)
+
   // English as default for all other countries
   // Listed explicitly for major English-speaking countries
   'US': 'en', // United States
@@ -17,15 +24,13 @@ export const COUNTRY_LANGUAGE_MAP: Record<string, string> = {
   'ZA': 'en', // South Africa
   'IN': 'en', // India
   'PH': 'en', // Philippines
-  'SG': 'en', // Singapore
-  'HK': 'en', // Hong Kong
   'MY': 'en', // Malaysia
 
   // Default for all other countries will be English
 };
 
 // Supported languages in the application
-export const SUPPORTED_LANGUAGES = ['en', 'ko'] as const;
+export const SUPPORTED_LANGUAGES = ['en', 'ko', 'zh'] as const;
 export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number];
 
 // Default language when no detection is possible
