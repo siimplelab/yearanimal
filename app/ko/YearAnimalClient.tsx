@@ -125,7 +125,7 @@ export default function Home() {
       {/* Input Form */}
       {!result && !isTransitioning && (
         <>
-          <form onSubmit={handleSubmit} className={`space-y-6 ${showForm ? `${animationStyles.landingSlideUp} ${animationStyles.landingDelay2}` : animationStyles.fadeOut}`>
+          <form onSubmit={handleSubmit} className={`space-y-6 ${showForm ? `${animationStyles.landingSlideUp} ${animationStyles.landingDelay2}` : animationStyles.fadeOut}`}>
             <div>
               <label htmlFor="year" className="block text-sm font-medium mb-2">
                 {t('home.yearInput.label')}
