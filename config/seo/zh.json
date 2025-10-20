@@ -1,0 +1,139 @@
+{
+  "default": {
+    "title": "生肖計算器 - 查詢您的生肖與五行",
+    "titleTemplate": "%s | 生肖查詢",
+    "description": "根據出生年份查詢您的生肖和五行屬性。免費的生肖計算器，提供性格分析、幸運數字和生肖配對。",
+    "keywords": [
+      "生肖計算器",
+      "十二生肖",
+      "生肖配對",
+      "五行",
+      "六十甲子",
+      "生肖運勢",
+      "屬相查詢",
+      "出生年份生肖",
+      "龍年",
+      "虎年",
+      "兔年",
+      "天干地支",
+      "十二生肖年份",
+      "生肖性格"
+    ],
+    "author": "生肖查詢",
+    "siteName": "生肖查詢 - 十二生肖計算器",
+    "siteUrl": "https://yearanimal.com",
+    "locale": "zh_TW",
+    "type": "website",
+    "twitterCard": "summary_large_image",
+    "twitterSite": "@yearanimal",
+    "themeColor": "#3b82f6"
+  },
+  "pages": {
+    "home": {
+      "title": "生肖計算器 - 查詢十二生肖與五行",
+      "description": "免費生肖計算器，輸入出生年份即可查詢您的生肖、五行、性格特徵和幸運數字。",
+      "ogImage": "/images/og-home-zh.png",
+      "canonical": "/zh"
+    },
+    "result": {
+      "title": "您的生肖：{element}{animal}",
+      "description": "您是{element}{animal}。了解您的性格特徵、幸運數字和與其他生肖的配對關係。",
+      "ogImage": "/images/og-result-zh.png"
+    }
+  },
+  "structured_data": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "生肖查詢 - 十二生肖計算器",
+      "url": "https://yearanimal.com/zh",
+      "description": "免費線上生肖計算器查詢十二生肖與五行",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TWD"
+      },
+      "featureList": [
+        "十二生肖計算",
+        "五行判定",
+        "性格特徵分析",
+        "幸運數字查詢",
+        "生肖配對分析"
+      ]
+    },
+    "breadcrumbs": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首頁",
+          "item": "https://yearanimal.com/zh"
+        }
+      ]
+    },
+    "faq": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "什麼是十二生肖？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "十二生肖是以12年為週期的12種動物屬相。結合五行形成60年週期的六十甲子。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何查詢我的生肖？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "只需在計算器中輸入您的出生年份。生肖是根據農曆年份確定的。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "十二生肖動物有哪些？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "鼠、牛、虎、兔、龍、蛇、馬、羊、猴、雞、狗、豬，每12年循環一次。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "五行是什麼？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "木、火、土、金、水五種元素，每兩年變換一次，為生肖增添額外含義。"
+          }
+        }
+      ]
+    }
+  },
+  "social": {
+    "facebook": {
+      "appId": "",
+      "pages": "https://facebook.com/yearanimal"
+    },
+    "twitter": {
+      "handle": "@yearanimal",
+      "site": "@yearanimal",
+      "creator": "@yearanimal"
+    },
+    "instagram": "https://instagram.com/yearanimal",
+    "youtube": "",
+    "weibo": "",
+    "wechat": ""
+  },
+  "alternates": {
+    "languages": {
+      "ko": "/ko",
+      "zh": "/zh",
+      "en": "/en"
+    }
+  }
+}

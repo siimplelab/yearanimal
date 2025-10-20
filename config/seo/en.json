@@ -1,0 +1,135 @@
+{
+  "default": {
+    "title": "Chinese Zodiac Calculator - Discover Your Animal Sign",
+    "titleTemplate": "%s | Year Animal",
+    "description": "Discover your Chinese zodiac animal sign and element based on your birth year. Learn about personality traits, lucky numbers, and compatibility with our free zodiac calculator.",
+    "keywords": [
+      "Chinese zodiac",
+      "zodiac calculator",
+      "Chinese astrology",
+      "birth year animal",
+      "zodiac signs",
+      "Chinese horoscope",
+      "lunar calendar",
+      "year of the dragon",
+      "year of the tiger",
+      "zodiac compatibility",
+      "Chinese New Year",
+      "12 animals zodiac"
+    ],
+    "author": "Year Animal",
+    "siteName": "Year Animal - Chinese Zodiac Calculator",
+    "siteUrl": "https://yearanimal.com",
+    "locale": "en_US",
+    "type": "website",
+    "twitterCard": "summary_large_image",
+    "twitterSite": "@yearanimal",
+    "themeColor": "#3b82f6"
+  },
+  "pages": {
+    "home": {
+      "title": "Chinese Zodiac Calculator - Find Your Animal Sign & Element",
+      "description": "Free Chinese zodiac calculator to instantly discover your animal sign, element, and personality traits. Enter your birth year to learn about your Chinese astrology profile.",
+      "ogImage": "/images/og-home-en.png",
+      "canonical": "/"
+    },
+    "result": {
+      "title": "Your Chinese Zodiac: {animal} {element}",
+      "description": "You are a {element} {animal} in the Chinese zodiac. Discover your personality traits, lucky numbers, and compatibility with other signs.",
+      "ogImage": "/images/og-result-en.png"
+    }
+  },
+  "structured_data": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Year Animal - Chinese Zodiac Calculator",
+      "url": "https://yearanimal.com",
+      "description": "Free online Chinese zodiac calculator to find your animal sign and element",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Chinese zodiac animal calculation",
+        "Five elements determination",
+        "Personality traits analysis",
+        "Lucky numbers finder",
+        "Zodiac compatibility checker"
+      ]
+    },
+    "breadcrumbs": {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://yearanimal.com"
+        }
+      ]
+    },
+    "faq": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Chinese zodiac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Chinese zodiac is a 12-year cycle where each year is represented by an animal sign. Combined with the five elements, it creates a 60-year cycle used in Chinese astrology."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find my Chinese zodiac sign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply enter your birth year in our calculator. Your zodiac animal is determined by the year you were born according to the Chinese lunar calendar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the 12 Chinese zodiac animals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 12 animals are: Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, and Pig. Each appears once every 12 years."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the five elements in Chinese astrology?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The five elements are Wood, Fire, Earth, Metal, and Water. Each element cycles every two years and adds another layer of meaning to your zodiac sign."
+          }
+        }
+      ]
+    }
+  },
+  "social": {
+    "facebook": {
+      "appId": "",
+      "pages": "https://facebook.com/yearanimal"
+    },
+    "twitter": {
+      "handle": "@yearanimal",
+      "site": "@yearanimal",
+      "creator": "@yearanimal"
+    },
+    "instagram": "https://instagram.com/yearanimal",
+    "youtube": ""
+  },
+  "alternates": {
+    "languages": {
+      "ko": "/ko",
+      "zh": "/zh",
+      "en": "/en"
+    }
+  }
+}

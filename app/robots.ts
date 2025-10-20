@@ -1,20 +1,24 @@
 import { MetadataRoute } from 'next';
-import { siteConfig } from '@/lib/config/seo';
+import { getSEOConfig } from '@/lib/utils/seo';
 
 export default function robots(): MetadataRoute.Robots {
+  const config = getSEOConfig('en');
+  const siteUrl = config.default.siteUrl;
+
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/private/'],
+        disallow: ['/api/admin/', '/private/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
+        crawlDelay: 1,
       },
     ],
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
