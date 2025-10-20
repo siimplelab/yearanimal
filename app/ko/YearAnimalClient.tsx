@@ -5,6 +5,8 @@ import { useI18n } from '@/lib/i18n/i18n-context';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { calculateZodiacProfile } from '@/lib/utils/zodiac-calculator';
 import ShareButton from '../components/ShareButton';
+import FlipCard from '../components/FlipCard';
+import animationStyles from '../components/ResultAnimations.module.css';
 
 export default function Home() {
   const { t, locale } = useI18n();
@@ -14,6 +16,9 @@ export default function Home() {
   const [error, setError] = useState('');
   const [result, setResult] = useState<ReturnType<typeof calculateZodiacProfile> | null>(null);
   const [showShare, setShowShare] = useState(false);
+  const [showResultContent, setShowResultContent] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
   const currentYear = new Date().getFullYear();
   const minYear = 1900;
@@ -28,6 +33,7 @@ export default function Home() {
         setYear(urlYear);
         const profile = calculateZodiacProfile(yearNum);
         setResult(profile);
+        setShowResultContent(false); // Ensure content is hidden until card is clicked
       }
     }
   }, [searchParams]);
@@ -53,8 +59,17 @@ export default function Home() {
       return;
     }
 
-    const profile = calculateZodiacProfile(yearNum);
-    setResult(profile);
+    // Start transition effect
+    setIsTransitioning(true);
+    setShowForm(false);
+
+    // Delay before showing result
+    setTimeout(() => {
+      const profile = calculateZodiacProfile(yearNum);
+      setResult(profile);
+      setShowResultContent(false); // Reset the content visibility for new result
+      setIsTransitioning(false);
+    }, 800);
   };
 
   const quickSelectYears = [
@@ -69,14 +84,24 @@ export default function Home() {
   const handleQuickSelect = (selectedYear: number) => {
     setYear(selectedYear.toString());
     setError('');
-    const profile = calculateZodiacProfile(selectedYear);
-    setResult(profile);
+
+    // Start transition effect
+    setIsTransitioning(true);
+    setShowForm(false);
+
+    // Delay before showing result
+    setTimeout(() => {
+      const profile = calculateZodiacProfile(selectedYear);
+      setResult(profile);
+      setShowResultContent(false); // Reset the content visibility for new result
+      setIsTransitioning(false);
+    }, 800);
   };
 
   return (
     <div className="min-h-screen px-4 py-8 max-w-md mx-auto">
-      {/* Header */}
-      <div className="text-center mb-12">
+      {/* Header - Add slide-up animation */}
+      <div className={`text-center mb-12 ${animationStyles.landingSlideUp} ${animationStyles.landingDelay1}`}>
         <h1 className="text-3xl font-bold mb-3">
           {t('home.title')}
         </h1>
@@ -85,10 +110,22 @@ export default function Home() {
         </p>
       </div>
 
+      {/* Loading state during transition */}
+      {isTransitioning && (
+        <div className="flex justify-center items-center h-64">
+          <div className={`text-center ${animationStyles.loadingPulse}`}>
+            <div className="text-6xl mb-4">🔮</div>
+            <p className="text-gray-600 dark:text-gray-400">
+              {t('common.loading') || '띠를 찾는 중...'}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Input Form */}
-      {!result && (
+      {!result && !isTransitioning && (
         <>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className={`space-y-6 ${showForm ? `${animationStyles.landingSlideUp} ${animationStyles.landingDelay2}` : animationStyles.fadeOut}`>
             <div>
               <label htmlFor="year" className="block text-sm font-medium mb-2">
                 {t('home.yearInput.label')}
@@ -119,7 +156,7 @@ export default function Home() {
           </form>
 
           {/* Quick Select */}
-          <div className="mt-8">
+          <div className={`mt-8 ${showForm ? `${animationStyles.landingSlideUp} ${animationStyles.landingDelay3}` : animationStyles.fadeOut}`}>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               {t('home.quickSelect.title')}
             </p>
@@ -141,27 +178,36 @@ export default function Home() {
       {/* Result Display */}
       {result && (
         <div className="space-y-6">
-          {/* Animal & Element Display */}
-          <div className="text-center space-y-4">
-            <div className="text-6xl" role="img" aria-label={`${result.animal.nameEn} emoji`}>
-              {result.animal.emoji}
-            </div>
-            {/* Display all three languages together */}
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold" lang="ko">
-                {result.fullName.ko}
-              </h2>
-              <p className="text-xl font-semibold">
-                {result.fullName.en}
-              </p>
-              <p className="text-lg font-medium text-gray-700 dark:text-gray-300" lang="ko">
-                {result.fullName.koYear}
-              </p>
-            </div>
+          {/* Flip Card */}
+          <div className="flex justify-center">
+            <FlipCard
+              emoji={result.animal.emoji}
+              animalName={result.animal.nameKo}
+              onFlip={() => setShowResultContent(true)}
+              autoFlip={false}
+            />
           </div>
 
+          {/* Animal & Element Display - Show after flip */}
+          {showResultContent && (
+            <>
+              <div className={`text-center space-y-4 ${animationStyles.slideUpContainer} ${animationStyles.delay1}`}>
+                {/* Display all three languages together */}
+                <div className="space-y-2">
+                  <h2 className="text-2xl font-bold" lang="ko">
+                    {result.fullName.ko}
+                  </h2>
+                  <p className="text-xl font-semibold">
+                    {result.fullName.en}
+                  </p>
+                  <p className="text-lg font-medium text-gray-700 dark:text-gray-300" lang="ko">
+                    {result.fullName.koYear}
+                  </p>
+                </div>
+              </div>
+
           {/* Element Badge */}
-          <div className="flex justify-center">
+          <div className={`flex justify-center ${animationStyles.fadeInScale} ${animationStyles.delay2}`}>
             <div
               className="inline-flex items-center px-4 py-2 rounded-full font-medium"
               style={{
@@ -177,7 +223,7 @@ export default function Home() {
           </div>
 
           {/* Traits */}
-          <section className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4" aria-labelledby="traits-heading">
+          <section className={`bg-gray-50 dark:bg-gray-900 rounded-lg p-4 ${animationStyles.slideUpContainer} ${animationStyles.delay3}`} aria-labelledby="traits-heading">
             <h3 id="traits-heading" className="font-semibold mb-3 text-sm uppercase tracking-wide text-gray-700 dark:text-gray-300">
               {t('result.traits')}
             </h3>
@@ -185,7 +231,7 @@ export default function Home() {
               {(locale === 'ko' ? result.animal.traits.ko : result.animal.traits.en).map((trait, index) => (
                 <li
                   key={index}
-                  className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm"
+                  className={`px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm ${animationStyles.traitBadge}`}
                 >
                   {trait}
                 </li>
@@ -194,7 +240,7 @@ export default function Home() {
           </section>
 
           {/* Lucky Numbers */}
-          <section className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4" aria-labelledby="lucky-numbers-heading">
+          <section className={`bg-gray-50 dark:bg-gray-900 rounded-lg p-4 ${animationStyles.slideUpContainer} ${animationStyles.delay4}`} aria-labelledby="lucky-numbers-heading">
             <h3 id="lucky-numbers-heading" className="font-semibold mb-3 text-sm uppercase tracking-wide text-gray-700 dark:text-gray-300">
               {t('result.luckyNumbers')}
             </h3>
@@ -202,7 +248,7 @@ export default function Home() {
               {result.animal.luckyNumbers.map((num) => (
                 <div
                   key={num}
-                  className="w-10 h-10 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full font-semibold"
+                  className={`w-10 h-10 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full font-semibold ${animationStyles.popIn}`}
                   role="listitem"
                   aria-label={`Lucky number ${num}`}
                 >
@@ -216,7 +262,7 @@ export default function Home() {
           <div className="space-y-3">
             <button
               onClick={() => setShowShare(!showShare)}
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+              className={`w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${animationStyles.slideInLeft} ${animationStyles.delay1}`}
               aria-expanded={showShare}
               aria-controls="share-panel"
             >
@@ -224,7 +270,7 @@ export default function Home() {
             </button>
 
             {showShare && (
-              <div id="share-panel" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+              <div id="share-panel" className={`bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 ${animationStyles.fadeInScale}`}>
                 <ShareButton profile={result} />
               </div>
             )}
@@ -234,16 +280,19 @@ export default function Home() {
                 setResult(null);
                 setYear('');
                 setShowShare(false);
+                setShowResultContent(false); // Reset content visibility
                 // Remove year from URL
                 const newUrl = new URL(window.location.href);
                 newUrl.searchParams.delete('year');
                 router.replace(newUrl.pathname);
               }}
-              className="w-full py-3 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+              className={`w-full py-3 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${animationStyles.slideInLeft} ${animationStyles.delay2}`}
             >
               {t('common.tryAgain')}
             </button>
           </div>
+            </>
+          )}
         </div>
       )}
     </div>

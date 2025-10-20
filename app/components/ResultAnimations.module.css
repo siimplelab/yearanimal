@@ -1,0 +1,211 @@
+/* Slide-up animation for result content */
+.slideUpContainer {
+  animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Landing page animations */
+.landingSlideUp {
+  animation: slideUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.slideUpContainer.delay1 {
+  animation-delay: 0.1s;
+}
+
+.slideUpContainer.delay2 {
+  animation-delay: 0.2s;
+}
+
+.slideUpContainer.delay3 {
+  animation-delay: 0.3s;
+}
+
+.slideUpContainer.delay4 {
+  animation-delay: 0.4s;
+}
+
+.slideUpContainer.delay5 {
+  animation-delay: 0.5s;
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-in scale animation for sections */
+.fadeInScale {
+  animation: fadeInScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.fadeInScale.delay1 {
+  animation-delay: 0.15s;
+}
+
+.fadeInScale.delay2 {
+  animation-delay: 0.25s;
+}
+
+.fadeInScale.delay3 {
+  animation-delay: 0.35s;
+}
+
+.fadeInScale.delay4 {
+  animation-delay: 0.45s;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide-in from left animation for buttons */
+.slideInLeft {
+  animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.slideInLeft.delay1 {
+  animation-delay: 0.5s;
+}
+
+.slideInLeft.delay2 {
+  animation-delay: 0.6s;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Number badge pop animation */
+.popIn {
+  animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  opacity: 0;
+  transform: scale(0);
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Staggered pop-in for multiple items */
+.popIn:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.popIn:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.popIn:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.popIn:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+.popIn:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/* Trait badge animation */
+.traitBadge {
+  animation: traitFadeIn 0.4s ease-out forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes traitFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation for trait badges */
+.traitBadge:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.traitBadge:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.traitBadge:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.traitBadge:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+.traitBadge:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.traitBadge:nth-child(6) {
+  animation-delay: 0.55s;
+}
+
+/* Fade out animation for form */
+.fadeOut {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Loading state animation */
+.loadingPulse {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Landing page staggered delays */
+.landingDelay1 {
+  animation-delay: 0.1s;
+}
+
+.landingDelay2 {
+  animation-delay: 0.2s;
+}
+
+.landingDelay3 {
+  animation-delay: 0.3s;
+}

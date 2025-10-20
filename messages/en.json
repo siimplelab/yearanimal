@@ -1,7 +1,7 @@
 {
   "common": {
     "appName": "Year Animal",
-    "loading": "Loading...",
+    "loading": "Discovering your zodiac...",
     "error": "Error",
     "tryAgain": "Try Again",
     "share": "Share",

@@ -1,7 +1,7 @@
 {
   "common": {
     "appName": "生肖查詢",
-    "loading": "載入中...",
+    "loading": "正在發現您的生肖...",
     "error": "錯誤",
     "tryAgain": "重試",
     "share": "分享",

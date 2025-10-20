@@ -1,7 +1,7 @@
 {
   "common": {
     "appName": "띠 찾기",
-    "loading": "로딩 중...",
+    "loading": "띠를 찾는 중...",
     "error": "오류",
     "tryAgain": "다시 시도",
     "share": "공유",
