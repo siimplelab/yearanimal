@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useI18n } from '@/lib/i18n/i18n-context';
+import { LANGUAGE_COOKIE_NAME, LANGUAGE_COOKIE_MAX_AGE } from '@/lib/constants/countries';
 
 export default function LanguageSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -27,6 +28,14 @@ function LanguageSwitcherContent() {
   const pathname = usePathname();
 
   const handleChange = (newLocale: string) => {
+    // Set cookie to remember language preference
+    const expiryDate = new Date();
+    expiryDate.setSeconds(expiryDate.getSeconds() + LANGUAGE_COOKIE_MAX_AGE);
+
+    document.cookie = `${LANGUAGE_COOKIE_NAME}=${newLocale}; path=/; max-age=${LANGUAGE_COOKIE_MAX_AGE}; SameSite=Lax${
+      window.location.protocol === 'https:' ? '; Secure' : ''
+    }`;
+
     // Replace the locale in the pathname
     const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
     router.push(newPathname);
