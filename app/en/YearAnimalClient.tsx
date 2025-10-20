@@ -19,6 +19,7 @@ export default function Home() {
   const [showResultContent, setShowResultContent] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showForm, setShowForm] = useState(true);
+  const [currentStep, setCurrentStep] = useState<'input' | 'loading' | 'card' | 'details'>('input');
 
   const currentYear = new Date().getFullYear();
   const minYear = 1900;
@@ -34,9 +35,28 @@ export default function Home() {
         const profile = calculateZodiacProfile(yearNum);
         setResult(profile);
         setShowResultContent(false); // Ensure content is hidden until card is clicked
+        setShowForm(false);
+        setCurrentStep('card');
       }
     }
   }, [searchParams]);
+
+  const handleBack = () => {
+    if (currentStep === 'details') {
+      setShowResultContent(false);
+      setCurrentStep('card');
+    } else if (currentStep === 'card') {
+      setResult(null);
+      setShowForm(true);
+      setCurrentStep('input');
+      // Remove year from URL
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('year');
+      router.replace(newUrl.pathname);
+    } else if (showShare) {
+      setShowShare(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,14 +82,16 @@ export default function Home() {
     // Start transition effect
     setIsTransitioning(true);
     setShowForm(false);
+    setCurrentStep('loading');
 
-    // Delay before showing result
+    // Increased delay to 3 seconds
     setTimeout(() => {
       const profile = calculateZodiacProfile(yearNum);
       setResult(profile);
       setShowResultContent(false); // Reset the content visibility for new result
       setIsTransitioning(false);
-    }, 800);
+      setCurrentStep('card');
+    }, 3000);
   };
 
   const quickSelectYears = [
@@ -88,18 +110,33 @@ export default function Home() {
     // Start transition effect
     setIsTransitioning(true);
     setShowForm(false);
+    setCurrentStep('loading');
 
-    // Delay before showing result
+    // Increased delay to 3 seconds
     setTimeout(() => {
       const profile = calculateZodiacProfile(selectedYear);
       setResult(profile);
       setShowResultContent(false); // Reset the content visibility for new result
       setIsTransitioning(false);
-    }, 800);
+      setCurrentStep('card');
+    }, 3000);
   };
 
   return (
     <div className="min-h-screen px-4 py-8 max-w-md mx-auto">
+      {/* Back Button - Show when not on input step or when share is open */}
+      {(currentStep !== 'input' || showShare) && (
+        <button
+          onClick={handleBack}
+          className="mb-6 flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          {t('common.back') || 'Back'}
+        </button>
+      )}
+
       {/* Header - Add slide-up animation */}
       <div className={`text-center mb-12 ${animationStyles.landingSlideUp} ${animationStyles.landingDelay1}`}>
         <h1 className="text-3xl font-bold mb-3">
@@ -113,8 +150,8 @@ export default function Home() {
       {/* Loading state during transition */}
       {isTransitioning && (
         <div className="flex justify-center items-center h-64">
-          <div className={`text-center ${animationStyles.loadingPulse}`}>
-            <div className="text-6xl mb-4">🔮</div>
+          <div className={`text-center ${animationStyles.loadingFadeIn}`}>
+            <div className={`text-6xl mb-4 ${animationStyles.loadingPulse}`}>🔮</div>
             <p className="text-gray-600 dark:text-gray-400">
               {t('common.loading') || 'Discovering your zodiac...'}
             </p>
@@ -183,7 +220,10 @@ export default function Home() {
             <FlipCard
               emoji={result.animal.emoji}
               animalName={result.animal.nameEn}
-              onFlip={() => setShowResultContent(true)}
+              onFlip={() => {
+                setShowResultContent(true);
+                setCurrentStep('details');
+              }}
               autoFlip={false}
             />
           </div>
@@ -281,6 +321,8 @@ export default function Home() {
                 setYear('');
                 setShowShare(false);
                 setShowResultContent(false); // Reset content visibility
+                setShowForm(true); // Reset form visibility
+                setCurrentStep('input'); // Reset to input step
                 // Remove year from URL
                 const newUrl = new URL(window.location.href);
                 newUrl.searchParams.delete('year');
