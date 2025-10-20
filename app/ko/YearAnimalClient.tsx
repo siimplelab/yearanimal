@@ -146,12 +146,18 @@ export default function Home() {
             <div className="text-6xl" role="img" aria-label={`${result.animal.nameEn} emoji`}>
               {result.animal.emoji}
             </div>
-            <h2 className="text-2xl font-bold">
-              {locale === 'ko' ? result.fullName.ko : result.fullName.en}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400" lang="zh">
-              {result.fullName.traditional}
-            </p>
+            {/* Display all three languages together */}
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold" lang="ko">
+                {result.fullName.ko}
+              </h2>
+              <p className="text-xl font-semibold">
+                {result.fullName.en}
+              </p>
+              <p className="text-lg font-medium text-gray-700 dark:text-gray-300" lang="zh">
+                {result.fullName.hanja} ({result.fullName.traditional})
+              </p>
+            </div>
           </div>
 
           {/* Element Badge */}
