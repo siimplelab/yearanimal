@@ -106,20 +106,7 @@ export default function Home() {
   const handleQuickSelect = (selectedYear: number) => {
     setYear(selectedYear.toString());
     setError('');
-
-    // Start transition effect
-    setIsTransitioning(true);
-    setShowForm(false);
-    setCurrentStep('loading');
-
-    // Increased delay to 3 seconds
-    setTimeout(() => {
-      const profile = calculateZodiacProfile(selectedYear);
-      setResult(profile);
-      setShowResultContent(false); // Reset the content visibility for new result
-      setIsTransitioning(false);
-      setCurrentStep('card');
-    }, 3000);
+    // Just populate the field, don't submit automatically
   };
 
   return (
@@ -173,7 +160,7 @@ export default function Home() {
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
                 placeholder={t('home.yearInput.placeholder')}
-                className="w-full px-4 py-3 text-lg border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-900"
+                className="w-full px-4 py-3 text-lg border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 dark:bg-gray-900"
                 min={minYear}
                 max={maxYear}
               />
@@ -186,7 +173,7 @@ export default function Home() {
 
             <button
               type="submit"
-              className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+              className="w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
             >
               {t('home.yearInput.submit')}
             </button>
@@ -302,7 +289,7 @@ export default function Home() {
           <div className="space-y-3">
             <button
               onClick={() => setShowShare(!showShare)}
-              className={`w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${animationStyles.slideInLeft} ${animationStyles.delay1}`}
+              className={`w-full py-3 px-4 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${animationStyles.slideInLeft} ${animationStyles.delay1}`}
               aria-expanded={showShare}
               aria-controls="share-panel"
             >

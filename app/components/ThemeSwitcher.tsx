@@ -26,7 +26,7 @@ function ThemeSwitcherContent() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+      className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
       aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
       aria-pressed={theme === 'dark'}
       type="button"
