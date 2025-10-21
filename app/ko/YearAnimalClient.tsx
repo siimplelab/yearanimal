@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useI18n } from '@/lib/i18n/i18n-context';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { calculateZodiacProfile } from '@/lib/utils/zodiac-calculator';
 import ShareButton from '../components/ShareButton';
 import FlipCard from '../components/FlipCard';
@@ -10,7 +10,6 @@ import animationStyles from '../components/ResultAnimations.module.css';
 
 export default function Home() {
   const { t, locale } = useI18n();
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [year, setYear] = useState('');
   const [error, setError] = useState('');
@@ -20,6 +19,7 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showForm, setShowForm] = useState(true);
   const [currentStep, setCurrentStep] = useState<'input' | 'loading' | 'card' | 'details'>('input');
+  const [showCardAnimation, setShowCardAnimation] = useState(false);
 
   const currentYear = new Date().getFullYear();
   const minYear = 1900;
@@ -110,6 +110,7 @@ export default function Home() {
       setResult(null);
       setShowForm(true);
       setCurrentStep('input');
+      setShowCardAnimation(false); // Reset card animation
       updateURL('input');
     } else if (showShare) {
       setShowShare(false);
@@ -149,6 +150,7 @@ export default function Home() {
       setShowResultContent(false); // Reset the content visibility for new result
       setIsTransitioning(false);
       setCurrentStep('card');
+      setShowCardAnimation(true); // Trigger card animation
       updateURL('card', year);
     }, 3000);
   };
@@ -262,7 +264,7 @@ export default function Home() {
       {result && (
         <div className="space-y-6">
           {/* Flip Card */}
-          <div className={`flex justify-center ${currentStep === 'card' ? animationStyles.cardSlideUp : ''}`}>
+          <div className={`flex justify-center ${showCardAnimation ? animationStyles.cardSlideUp : ''}`}>
             <FlipCard
               emoji={result.animal.emoji}
               animalName={result.animal.nameKo}
@@ -370,6 +372,7 @@ export default function Home() {
                 setShowResultContent(false); // Reset content visibility
                 setShowForm(true); // Reset form visibility
                 setCurrentStep('input'); // Reset to input step
+                setShowCardAnimation(false); // Reset card animation
                 updateURL('input');
               }}
               className={`w-full py-3 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${animationStyles.slideInLeft} ${animationStyles.delay2}`}
