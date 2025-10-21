@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useI18n } from '@/lib/i18n/i18n-context';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { calculateZodiacProfile } from '@/lib/utils/zodiac-calculator';
 import ShareButton from '../components/ShareButton';
 import FlipCard from '../components/FlipCard';
@@ -25,19 +25,79 @@ export default function Home() {
   const minYear = 1900;
   const maxYear = 2100;
 
+  // Update URL based on current step
+  const updateURL = (step: string, yearValue?: string) => {
+    const newUrl = new URL(window.location.href);
+    if (step === 'input') {
+      newUrl.searchParams.delete('year');
+      newUrl.searchParams.delete('step');
+    } else {
+      if (yearValue) {
+        newUrl.searchParams.set('year', yearValue);
+      }
+      if (step !== 'card') {
+        newUrl.searchParams.set('step', step);
+      }
+    }
+    window.history.pushState({ step, year: yearValue }, '', newUrl.toString());
+  };
+
+  // Handle browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      const state = event.state;
+      if (state) {
+        if (state.step === 'input') {
+          setResult(null);
+          setShowForm(true);
+          setShowResultContent(false);
+          setCurrentStep('input');
+        } else if (state.step === 'card') {
+          setShowResultContent(false);
+          setCurrentStep('card');
+        } else if (state.step === 'details') {
+          setShowResultContent(true);
+          setCurrentStep('details');
+        }
+      } else {
+        // Default to input if no state
+        setResult(null);
+        setShowForm(true);
+        setShowResultContent(false);
+        setCurrentStep('input');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   // Check for year in URL on mount
   useEffect(() => {
     const urlYear = searchParams.get('year');
+    const urlStep = searchParams.get('step');
     if (urlYear) {
       const yearNum = parseInt(urlYear, 10);
       if (!isNaN(yearNum) && yearNum >= minYear && yearNum <= maxYear) {
         setYear(urlYear);
         const profile = calculateZodiacProfile(yearNum);
         setResult(profile);
-        setShowResultContent(false); // Ensure content is hidden until card is clicked
         setShowForm(false);
-        setCurrentStep('card');
+
+        if (urlStep === 'details') {
+          setShowResultContent(true);
+          setCurrentStep('details');
+        } else {
+          setShowResultContent(false);
+          setCurrentStep('card');
+        }
+
+        // Set initial history state
+        window.history.replaceState({ step: urlStep || 'card', year: urlYear }, '', window.location.href);
       }
+    } else {
+      // Set initial history state for input
+      window.history.replaceState({ step: 'input' }, '', window.location.href);
     }
   }, [searchParams]);
 
@@ -45,14 +105,12 @@ export default function Home() {
     if (currentStep === 'details') {
       setShowResultContent(false);
       setCurrentStep('card');
+      updateURL('card', year);
     } else if (currentStep === 'card') {
       setResult(null);
       setShowForm(true);
       setCurrentStep('input');
-      // Remove year from URL
-      const newUrl = new URL(window.location.href);
-      newUrl.searchParams.delete('year');
-      router.replace(newUrl.pathname);
+      updateURL('input');
     } else if (showShare) {
       setShowShare(false);
     }
@@ -91,6 +149,7 @@ export default function Home() {
       setShowResultContent(false); // Reset the content visibility for new result
       setIsTransitioning(false);
       setCurrentStep('card');
+      updateURL('card', year);
     }, 3000);
   };
 
@@ -203,13 +262,14 @@ export default function Home() {
       {result && (
         <div className="space-y-6">
           {/* Flip Card */}
-          <div className="flex justify-center">
+          <div className={`flex justify-center ${currentStep === 'card' ? animationStyles.cardSlideUp : ''}`}>
             <FlipCard
               emoji={result.animal.emoji}
               animalName={result.animal.nameEn}
               onFlip={() => {
                 setShowResultContent(true);
                 setCurrentStep('details');
+                updateURL('details', year);
               }}
               autoFlip={false}
             />
@@ -310,10 +370,7 @@ export default function Home() {
                 setShowResultContent(false); // Reset content visibility
                 setShowForm(true); // Reset form visibility
                 setCurrentStep('input'); // Reset to input step
-                // Remove year from URL
-                const newUrl = new URL(window.location.href);
-                newUrl.searchParams.delete('year');
-                router.replace(newUrl.pathname);
+                updateURL('input');
               }}
               className={`w-full py-3 px-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${animationStyles.slideInLeft} ${animationStyles.delay2}`}
             >
