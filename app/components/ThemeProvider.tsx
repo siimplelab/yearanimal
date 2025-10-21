@@ -47,26 +47,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => {
-      const newTheme = prevTheme === 'light' ? 'dark' : 'light';
-      // Apply immediately for better UX
-      const root = document.documentElement;
-      if (newTheme === 'dark') {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
-      return newTheme;
-    });
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
-  // Prevent hydration mismatch by not rendering context until mounted
-  if (!mounted) {
-    return <>{children}</>;
-  }
+  // Always provide the context, but with a stub toggleTheme during SSR
+  const contextValue: ThemeContextType = {
+    theme,
+    toggleTheme: mounted ? toggleTheme : () => {}
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );

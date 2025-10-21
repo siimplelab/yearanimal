@@ -5,6 +5,7 @@ import { useTheme } from './ThemeProvider';
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -16,12 +17,6 @@ export default function ThemeSwitcher() {
       <div className="w-[41px] h-[40px] rounded-lg border border-gray-300 dark:border-gray-700" />
     );
   }
-
-  return <ThemeSwitcherContent />;
-}
-
-function ThemeSwitcherContent() {
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <button

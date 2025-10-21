@@ -7,7 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 interface LayoutWrapperProps {
   children: React.ReactNode;
-  locale: 'en' | 'ko';
+  locale: 'en' | 'ko' | 'zh';
 }
 
 export default function LayoutWrapper({ children, locale }: LayoutWrapperProps) {
