@@ -102,18 +102,17 @@ export default function Home() {
   }, [searchParams]);
 
   const handleBack = () => {
-    if (currentStep === 'details') {
-      setShowResultContent(false);
-      setCurrentStep('card');
-      updateURL('card', year);
-    } else if (currentStep === 'card') {
+    if (showShare) {
+      // Close share panel
+      setShowShare(false);
+    } else if (currentStep === 'details' || currentStep === 'card') {
+      // From any result page, go back to input page
       setResult(null);
       setShowForm(true);
+      setShowResultContent(false);
       setCurrentStep('input');
       setShowCardAnimation(false); // Reset card animation
       updateURL('input');
-    } else if (showShare) {
-      setShowShare(false);
     }
   };
 
