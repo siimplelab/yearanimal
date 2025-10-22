@@ -48,16 +48,22 @@ export default function Home() {
       const state = event.state;
       if (state) {
         if (state.step === 'input') {
+          // Go back to input page
           setResult(null);
           setShowForm(true);
           setShowResultContent(false);
           setCurrentStep('input');
-        } else if (state.step === 'card') {
+          setShowCardAnimation(false);
+        } else if (state.step === 'card' || state.step === 'details') {
+          // For any result page, browser back should go to input
+          // This matches the UI back button behavior
+          setResult(null);
+          setShowForm(true);
           setShowResultContent(false);
-          setCurrentStep('card');
-        } else if (state.step === 'details') {
-          setShowResultContent(true);
-          setCurrentStep('details');
+          setCurrentStep('input');
+          setShowCardAnimation(false);
+          // Update URL to reflect input state
+          updateURL('input');
         }
       } else {
         // Default to input if no state
@@ -65,6 +71,7 @@ export default function Home() {
         setShowForm(true);
         setShowResultContent(false);
         setCurrentStep('input');
+        setShowCardAnimation(false);
       }
     };
 

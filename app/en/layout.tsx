@@ -21,6 +21,9 @@ export default function LocaleLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
         <SEOHead locale="en" />
         <LayoutWrapper locale="en">
