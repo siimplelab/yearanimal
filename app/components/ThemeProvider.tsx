@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -46,15 +46,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [theme, mounted]);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
+  const toggleTheme = useCallback(() => {
+    setTheme(prevTheme => {
+      const newTheme = prevTheme === 'light' ? 'dark' : 'light';
+      return newTheme;
+    });
+  }, []);
 
-  // Always provide the context, but with a stub toggleTheme during SSR
-  const contextValue: ThemeContextType = {
+  // Memoize context value to prevent unnecessary re-renders
+  const contextValue = useMemo<ThemeContextType>(() => ({
     theme,
-    toggleTheme: mounted ? toggleTheme : () => {}
-  };
+    toggleTheme
+  }), [theme, toggleTheme]);
 
   return (
     <ThemeContext.Provider value={contextValue}>

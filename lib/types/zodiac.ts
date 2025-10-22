@@ -9,6 +9,7 @@ export interface Animal {
   traits: {
     ko: string[];
     en: string[];
+    zh: string[];
   };
   luckyNumbers: number[];
   compatible: string[]; // Animal IDs
@@ -32,6 +33,7 @@ export interface Element {
   traits: {
     ko: string[];
     en: string[];
+    zh: string[];
   };
   symbol: string; // emoji or icon
 }

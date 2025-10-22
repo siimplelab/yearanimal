@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './FlipCard.module.css';
 
 interface FlipCardProps {
@@ -11,10 +11,28 @@ interface FlipCardProps {
 }
 
 export default function FlipCard({ emoji, animalName, onFlip, autoFlip = false }: FlipCardProps) {
-  const [isFlipped, setIsFlipped] = useState(autoFlip);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  // Auto-flip effect
+  useEffect(() => {
+    if (autoFlip) {
+      // Small delay before auto-flip to let card appear first
+      const flipTimer = setTimeout(() => {
+        setIsFlipped(true);
+        if (onFlip) {
+          // Additional delay to sync with flip animation
+          setTimeout(() => {
+            onFlip();
+          }, 600);
+        }
+      }, 500);
+
+      return () => clearTimeout(flipTimer);
+    }
+  }, [autoFlip, onFlip]);
 
   const handleClick = () => {
-    if (!isFlipped) {
+    if (!isFlipped && !autoFlip) {
       setIsFlipped(true);
       if (onFlip) {
         // Delay callback to sync with animation

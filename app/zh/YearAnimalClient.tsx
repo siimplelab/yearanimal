@@ -273,7 +273,7 @@ export default function Home() {
                 setCurrentStep('details');
                 updateURL('details', year);
               }}
-              autoFlip={false}
+              autoFlip={true}
             />
           </div>
 
@@ -317,7 +317,7 @@ export default function Home() {
               {t('result.traits')}
             </h3>
             <ul className="flex flex-wrap gap-2" role="list">
-              {(locale === 'ko' ? result.animal.traits.ko : result.animal.traits.en).map((trait, index) => (
+              {result.animal.traits[locale as 'en' | 'ko' | 'zh'].map((trait, index) => (
                 <li
                   key={index}
                   className={`px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm ${animationStyles.traitBadge}`}

@@ -17,7 +17,8 @@ export const elements: Element[] = [
     },
     traits: {
       ko: ['성장', '유연성', '창의성', '관대함', '이상주의'],
-      en: ['Growth', 'Flexibility', 'Creativity', 'Generosity', 'Idealism']
+      en: ['Growth', 'Flexibility', 'Creativity', 'Generosity', 'Idealism'],
+      zh: ['成长', '灵活', '创造力', '慷慨', '理想主义']
     },
     symbol: '🌲'
   },
@@ -37,7 +38,8 @@ export const elements: Element[] = [
     },
     traits: {
       ko: ['열정', '활력', '리더십', '모험심', '자신감'],
-      en: ['Passion', 'Energy', 'Leadership', 'Adventure', 'Confidence']
+      en: ['Passion', 'Energy', 'Leadership', 'Adventure', 'Confidence'],
+      zh: ['热情', '活力', '领导力', '冒险精神', '自信']
     },
     symbol: '🔥'
   },
@@ -57,7 +59,8 @@ export const elements: Element[] = [
     },
     traits: {
       ko: ['안정성', '실용성', '신뢰성', '인내심', '양육'],
-      en: ['Stability', 'Practicality', 'Reliability', 'Patience', 'Nurturing']
+      en: ['Stability', 'Practicality', 'Reliability', 'Patience', 'Nurturing'],
+      zh: ['稳定', '实用', '可靠', '耐心', '养育']
     },
     symbol: '🏔️'
   },
@@ -77,7 +80,8 @@ export const elements: Element[] = [
     },
     traits: {
       ko: ['결단력', '정의감', '조직력', '독립성', '완벽주의'],
-      en: ['Determination', 'Justice', 'Organization', 'Independence', 'Perfectionism']
+      en: ['Determination', 'Justice', 'Organization', 'Independence', 'Perfectionism'],
+      zh: ['决心', '正义', '组织能力', '独立', '完美主义']
     },
     symbol: '⚔️'
   },
@@ -97,7 +101,8 @@ export const elements: Element[] = [
     },
     traits: {
       ko: ['지혜', '유연성', '직관력', '동정심', '소통'],
-      en: ['Wisdom', 'Flexibility', 'Intuition', 'Empathy', 'Communication']
+      en: ['Wisdom', 'Flexibility', 'Intuition', 'Empathy', 'Communication'],
+      zh: ['智慧', '灵活', '直觉', '同理心', '沟通']
     },
     symbol: '💧'
   }

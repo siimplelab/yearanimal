@@ -1,7 +1,8 @@
 import { generateMetadata as generateSEOMetadata } from '@/lib/utils/seo';
-import { I18nProvider } from '@/lib/i18n/i18n-context';
+import LayoutWrapper from '../components/LayoutWrapper';
 import SEOHead from '../components/SEOHead';
 import type { Metadata, Viewport } from 'next';
+import "../globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   return generateSEOMetadata('zh', 'home');
@@ -19,9 +20,13 @@ export default function ChineseLayout({
   children: React.ReactNode;
 }) {
   return (
-    <I18nProvider defaultLocale="zh">
-      <SEOHead locale="zh" />
-      {children}
-    </I18nProvider>
+    <html lang="zh" suppressHydrationWarning>
+      <body className="antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+        <SEOHead locale="zh" />
+        <LayoutWrapper locale="zh">
+          {children}
+        </LayoutWrapper>
+      </body>
+    </html>
   );
 }
